@@ -11,9 +11,14 @@ class App extends Component {
   }
 
   onAddTask(task){
-    //console.log(task);
     this.setState({
       tasks: [...this.state.tasks, task]
+    });
+  }
+
+  onDeleteTask(index){
+    this.setState({
+      tasks: this.state.tasks.filter((_,i)=> i !== index)
     });
   }
 
@@ -24,7 +29,11 @@ class App extends Component {
         <hr/>
         <ul>
           {this.state.tasks.map((task, index)=>{
-            return <li key={index}>{task}</li>
+            return (
+            <li key={index}>
+              {task}
+              <button onClick={this.onDeleteTask.bind(this, index)}>x</button>
+            </li>);
           })}
         </ul>
       </div>
