@@ -17,6 +17,10 @@ class AddTaskForm extends Component {
 
     submit(event){
         event.preventDefault();
+        this.props.onAddTask(this.state.task);
+        this.setState({
+            task: ''
+        });
     }
 
     render() {
